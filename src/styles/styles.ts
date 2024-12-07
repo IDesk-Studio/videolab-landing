@@ -15,20 +15,23 @@ export const Styles = createGlobalStyle`
     }
 
     body,
-    html,
-    a {
+    html {
         font-family: 'Inter', sans-serif;
-    }
-
-    /* Body Styles */
-    body {
         margin: 0;
         padding: 0;
         border: 0;
         outline: 0;
         background: #fff;
-        overflow-x: hidden;
+        overflow-x: hidden; /* Отключение горизонтального скролла */
         color: #18216d; /* Основной цвет текста */
+        width: 100%; /* Полная ширина */
+        box-sizing: border-box; /* Учитывать padding и border */
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit; /* Устанавливаем box-sizing для всех элементов */
     }
 
     /* Headings */
@@ -38,39 +41,37 @@ export const Styles = createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: 'Playfair Display', serif; /* Элегантный шрифт для заголовков */
-        color: #18216d; /* Темно-синий цвет */
-        font-size: 48px; /* Основной размер */
-        line-height: 1.3; /* Оптимальный межстрочный интервал */
-        letter-spacing: 0.01em; /* Легкое межбуквенное расстояние */
-        text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Легкая тень для акцента */
+        font-family: 'Playfair Display', serif;
+        color: #18216d;
+        font-size: 48px;
+        line-height: 1.3;
+        letter-spacing: 0.01em;
+        text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
         margin-bottom: 1rem;
 
         @media only screen and (max-width: 768px) {
-            font-size: 36px; /* Размер для планшетов */
-            line-height: 1.2;
+            font-size: 36px;
         }
 
         @media only screen and (max-width: 414px) {
-            font-size: 28px; /* Размер для смартфонов */
-            line-height: 1.1;
+            font-size: 28px;
         }
     }
 
     /* Paragraphs */
     p {
         font-family: 'Inter', sans-serif;
-        color: #18216d; /* Синий цвет текста */
-        font-size: 18px; /* Оптимальный размер */
-        line-height: 1.6; /* Увеличенный межстрочный интервал */
-        margin-bottom: 1rem; /* Отступ между абзацами */
+        color: #18216d;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 1rem;
 
         @media only screen and (max-width: 768px) {
-            font-size: 16px; /* Размер для планшетов */
+            font-size: 16px;
         }
 
         @media only screen and (max-width: 414px) {
-            font-size: 14px; /* Размер для смартфонов */
+            font-size: 14px;
         }
     }
 
@@ -78,78 +79,66 @@ export const Styles = createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #18216d; /* Основной синий цвет */
+        color: #18216d;
 
         :hover {
-            color: #0d1b2a; /* Темнее при наведении */
-            text-decoration: underline; /* Подчеркивание для акцента */
+            color: #0d1b2a;
+            text-decoration: underline;
         }
     }
 
     /* Buttons */
     button {
-        background-color: #18216d; /* Темно-синий цвет кнопки */
-        color: #ffffff; /* Белый текст */
+        background-color: #18216d;
+        color: #ffffff;
         font-family: 'Inter', sans-serif;
         font-size: 16px;
         font-weight: 600;
         padding: 0.8rem 1.2rem;
-        border-radius: 8px; /* Закругленные углы */
+        border-radius: 8px;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease-in-out;
-        margin-top: 1rem;
 
         &:hover {
-            background-color: #0d1b2a; /* Темнее при наведении */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Усиление тени */
-            transform: translateY(-2px); /* Легкий подъем */
+            background-color: #0d1b2a;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
     }
 
     /* Inputs and Textareas */
     input,
     textarea {
-        font-family: 'Inter', sans-serif; /* Шрифт для форм */
+        font-family: 'Inter', sans-serif;
         border-radius: 4px;
-        border: 1px solid #ccc; /* Легкий серый цвет рамки */
+        border: 1px solid #ccc;
         background: #f9f9f9;
         transition: all 0.3s ease-in-out;  
         outline: none;
-        width: 100%;  
+        width: 100%;
         padding: 1rem 1.25rem;
         font-size: 16px;
 
         :focus-within {
             background: none;
-            box-shadow: #2e186a 0px 0px 0px 2px; /* Акцент при фокусе */
+            box-shadow: #2e186a 0px 0px 0px 2px;
         }
     }
 
-    *:focus {
-        outline: none;
-    }
-
-    /* Container for Mobile Adjustments */
-    .container {
-        padding: 1rem; /* Увеличить отступы */
-        display: flex;
-        flex-direction: column; /* Вертикальное расположение элементов */
-        align-items: center; /* Центровка на мобильных */
-        text-align: center; /* Текст по центру */
-    }
-
     /* Images */
+    img,
     .image {
         max-width: 100%;
-        margin-bottom: 1rem; /* Отступ от изображения */
+        height: auto;
+        display: block; /* Избежать inline артефактов */
     }
 
     /* SVG Styling */
     .about-block-image svg {
         text-align: center;
-        fill: #18216d; /* Цвет для SVG */
+        fill: #18216d;
     }
 
     /* Drawer Content */
